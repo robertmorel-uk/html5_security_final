@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websockets</title>
+    <script>
+        var ws = new WebSocket('wss://echo.websocket.org');
+
+        ws.onmessage = function (event) {
+            console.log(event.data);
+        };
+
+        ws.onopen = function () {
+            ws.send('connect');
+        };
+    </script>
+</head>
+
+<body>
+    Check the console.
+</body>
+
+</html>

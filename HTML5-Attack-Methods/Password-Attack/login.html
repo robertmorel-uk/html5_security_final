@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <title>Brute Force Password Attack Login</title>
+    <style>
+        .demo-div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #555;
+            background: whitesmoke;P
+        }
+    </style>
+    <script>
+        $('document').ready(function () {
+            let usernameLS = "";
+            let passwordLS = "";
+
+            $("#login").click(function (event) {
+                let username = $("#username").val();
+                let password = $("#password").val();
+
+                if (localStorage.getItem("username") || localStorage.getItem("password")) {
+                    usernameLS = localStorage.getItem("username");
+                    passwordLS = localStorage.getItem("password");
+
+                if (username == "" || password == "") {
+                    $("#message").text("Please complete the required fields");
+                } else if (username == usernameLS && password == passwordLS) {
+                    $("#message").text("Logged in as " + usernameLS);
+                } else if (username == "admin" && password == "12345") {
+                    $("#message").text("Logged in as admin");
+                } else if (username != "admin" && username != usernameLS) {
+                    $("#message").text("Incorrect username");
+                } else {
+                    $("#message").text("Incorrect password");
+                }
+            }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="demo-div">
+        <h3>Brute Force Password attack Login</h3>
+    </div>
+
+    <div class="demo-div">
+        <fieldset>
+            <legend>Login</legend>
+            <label for="username">User:</label>
+            <input type="text" name="username" id="username" placeholder="Enter username"><br />
+            <label for="password">Pass:</label>
+            <input type="password" name="password" id="password" placeholder="Enter password"><br /><br />
+            <input type="submit" id="login" class="btn btn-primary" value="Login"><br />
+            <h5 id="message"></h5>
+        </fieldset>
+    </div>
+</body>
+
+</html>

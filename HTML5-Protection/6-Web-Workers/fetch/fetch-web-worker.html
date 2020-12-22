@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Request with Web Worker</title>
+    <script>
+        var worker = new Worker('./fetch-web-worker.js');
+        worker.onmessage = function (event) {
+            document.getElementById("name").innerHTML = (event.data.name);
+            document.getElementById("email").innerHTML = (event.data.email);
+            document.getElementById("message").innerHTML = (event.data.body);
+        };
+    </script>
+</head>
+
+<body>
+    <h2 id="name">
+        Getting comment....
+    </h2>
+    <h3 id="email"></h3>
+    <p id="message"></p>
+</body>
+
+</html>

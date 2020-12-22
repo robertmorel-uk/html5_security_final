@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Messaging Server</title>
+    <script>
+        var messageEventHandler = function (event) {
+
+            // If the message comes from the stated origin then process
+            if (event.origin == 'http://4-communication-apis.com') {
+                document.getElementById('iframeData').innerText=event.data;
+           }
+        }
+        window.addEventListener('message', messageEventHandler, false);
+    </script>
+</head>
+
+<body>
+    <h4 id="iframeData">I come from another page</h4>
+    <p>The text you see here comes from 
+        <a target="__blank" href="./web-messaging-server.html"<>
+            /web-messaging-server.html
+        </a></p>
+    <p>
+        Enter an input above and click send message. You will see that the text
+        is send to the other document and then displayed in this IFrame.
+    </p>
+</body>
+
+</html>

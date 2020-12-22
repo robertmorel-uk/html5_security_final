@@ -1,0 +1,21 @@
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "0"
+	Header always append X-Frame-Options SAMEORIGIN
+    Header set X-Content-Type-Options nosniff
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+    Header set Referrer-Policy "same-origin"
+	Header set Feature-Policy "geolocation 'self'; vibrate 'none'"
+	Header set Content-Security-Policy "default-src 'none';"
+</IfModule>
+
+# Example
+# X-XSS-Protection: 0
+
+# Apache implemetation
+header always set X-XSS-Protection 0
+
+# .htaccess implementation
+Header set X-XSS-Protection "0"
+
+# Nginx implementation
+add_header X-XSS-Protection "0" always;

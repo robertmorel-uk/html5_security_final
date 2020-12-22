@@ -1,0 +1,60 @@
+Able to brute force login form and registration
+Able to dos web app
+Invalid data in registration form - html5 attributes, js schecking
+Able to xss profile page
+injection of external script in channel page
+No origin checks on channel2
+able to host chat in IFrame
+Header forgery in ws server
+No security headers in place
+
+index.php
+
+nonce and honeypot
+
+register.php
+
+nonce and honeypot
+min and max attributes
+HTML5 pattern
+
+scripts.js
+
+encrypt
+decrypt
+nonce
+bot
+dos counter
+form validation
+popstate origin check
+
+profile.php
+encrypt
+decrypt
+sanitize
+
+channel.php
+
+sandbox
+postmessage origin
+
+channel2.php
+
+origin
+
+chat.php
+
+origin
+
+web-worker.php
+
+origin
+
+server.js
+
+origin
+ip
+
+.htaccess
+
+security headers

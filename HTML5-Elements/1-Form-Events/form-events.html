@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Form Events</title>
+    <style>
+        .demo-div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #555;
+            background: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-div">
+        <h3>Form 1 - Basic form structure</h3>
+        <form>P
+            <input type="text" name="fname" value="Harry"><br>
+            <input type="text" name="lname" value="Styles"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="demo-div">
+        <h3>Form 2 - Labels</h3>
+        <form>
+            <label for="fname">First name:</label><br>
+            <!--The for attribute of the label should be equal to the input ID value-->
+            <input type="text" id="fname" name="fname" value="Harry"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" value="Styles"><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4"
+                cols="30">I am interested in buying some hair gel.</textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="demo-div">
+        <h3>Form 3 - Fieldset</h3>
+
+
+
+        <form>
+            <fieldset disabled>
+                <!--Use the disabled attPP
+                    P
+                    ibute to disable all fields in the form-->
+                <legend>Group related data (fields disabled)</legend>
+                <input type="text" name="fname" value="Harry"><br>
+                <input type="text" name="lname" value="Styles"><br><br>
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="demo-div">
+        <h3>Form 4 - Select, radio and checkbox</h3>
+        <form>
+            <!--Select-->
+            <label for="cities">Choose your favourite city:</label>
+            <select id="cities" name="cities">
+                <option value="paris">Paris</option>
+                <!--The selected attribute pre-selects the option -->
+                <option value="london" selected>London</option>
+                <option value="new-york">New York</option>
+            </select><br />
+
+            <!--Radio-->
+            <fieldset>
+                <legend>Choose your favourite country:</legend>
+                <input type="radio" id="italy" name="country" value="Italy">
+                <label for="italy">Italy</label><br>
+                <input type="radio" id="america" name="country" value="America">
+                <label for="america">America</label><br>
+                <input type="radio" id="other" name="country" value="other">
+                <label for="other">Other</label>
+            </fieldset>
+
+            <!--Checkbox-->
+            <fieldset disabled>
+                <legend>Choose your favourite planet: (disabled and pre-selected)</legend>
+                <input type="checkbox" id="planet1" name="planet1" value="Mars">
+                <label for="planet1"> Mars</label><br>
+                <input type="checkbox" id="planet2" name="planet2" value="Uranus">
+                <label for="planet2"> Uranus</label><br>
+                <!--Earth is pre-selected using the checked attribute-->
+                <input type="checkbox" id="planet3" name="planet3" value="Earth" checked>
+                <label for="planet3"> Earth</label>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="demo-div">
+        <h3>Form 5 - Datalist</h3>
+        <form>
+            <input list="city">
+            <!--The list attribute and datalist ID must match-->
+            <datalist id="city">
+                <option value="Paris">
+                <option value="London">
+                <option value="New York">
+            </datalist>
+        </form>
+    </div>
+
+    <div class="demo-div">
+        <h3>Form 6 - Client side outputs</h3>
+        <p>Output the value of a + b.</p>
+        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+            <input type="number" id="a" name="a" value="0">
+            +
+            <input type="number" id="b" name="b" value="0">
+            =
+            <output name="x" for="a b"></output>
+        </form>
+    </div>
+
+    <div class="demo-div">
+        <h3>Form 7 - Actions and targets</h3>
+        <form action="/process_form.php" target="_blank" method="get" autocomplete="on" novalidate>
+            <!-- TARGETS
+                _blank - open in new tab
+                _self - default - open in current page
+                _parent - open in parent frame
+                _top - open in full body 
+                _framename - open in named IFrame
+            -->
+
+            <!--METHODS
+                get or post
+            -->
+            <input type="email" name="email"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="demo-div">
+        <h3>Form 8 - Input types</h3>
+        <form>
+            Checkbox: <input type="checkbox"><br />
+            Telephone number: <input type="tel"><br />
+            Text: <input type="text"><br />
+            Time: <input type="time"><br />
+            URL: <input type="url"><br />
+            Email: <input type="email"><br />
+            Hidden: <input type="hidden"><br />
+            <!--This field is required-->
+            Number: <input type="number" required><br />
+            Password: <input type="password"><br />
+            Radio button: <input type="radio"><br />
+            Range slider: <input type="range"><br />
+            Search type: <input type="search"><br />
+            Color picker: <input type="color"><br />
+            Date picker: <input type="date"><br />
+            Datetime picker <input type="datetime-local"><br />
+            Week picker: <input type="week"><br />
+            Month picker: <input type="month"><br />
+            File upload: <input type="file"><br />
+            Button: <input type="button" value="Button"><br />
+            Reset form: <input type="reset"><br />
+            Submit button: <input type="submit"><br />
+        </form>
+    </div>
+</body>
+
+</html>

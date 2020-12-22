@@ -1,0 +1,24 @@
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "0"
+	Header always append X-Frame-Options SAMEORIGIN
+    Header set X-Content-Type-Options nosniff
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+    Header set Referrer-Policy "same-origin"
+	Header set Feature-Policy "geolocation 'self'; vibrate 'none'"
+	Header set Content-Security-Policy "default-src 'none'; script-src 'self' https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js 'unsafe-inline'; font-src https://cdnjs.cloudflare.com/ https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/fonts/; connect-src 'self' https://jsonplaceholder.typicode.com ws://localhost:24601/; img-src 'self'; style-src 'self' cdnjs.cloudflare.com maxcdn.bootstrapcdn.com ajax.googleapis.com 'unsafe-inline';base-uri 'self';form-action 'self'; frame-src 'self'"
+</IfModule>
+
+# Run Php without filename extension
+Options +FollowSymLinks
+# Turn mod_rewrite on
+RewriteEngine On
+RewriteBase /
+
+# Pretty index.php url
+RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+## To internally redirect /dir/foo to /dir/foo.php
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_FILENAME}.php [L]

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Real Time Messaging</title>
+  <meta name="description" content="Real Time Messaging">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+  <script src="./js/crypto-js.min.js"></script>
+  <script src="./js/aes.js"></script>
+  <script src="./js/purify.min.js"></script>
+  <script src="./js/scripts.js"></script>
+</head>
+
+<body>
+  <h1>Real Time Messaging</h1>
+  <pre id="messages" style="height: 400px; overflow: scroll"></pre>
+  <input type="text" id="messageBox" placeholder="Type your message here"
+    style="display: block; width: 100%; margin-bottom: 10px; padding: 10px;" />
+  <button id="send" title="Send Message!" style="width: 100%; height: 30px;">Send Message</button>
+  <script>
+    (function () {
+      const host = location.hostname;
+      
+      if(host == "4-communication-apis.com"){
+        const sendBtn = document.querySelector('#send');
+        const messages = document.querySelector('#messages');
+        const messageBox = document.querySelector('#messageBox');
+
+        let ws;
+
+        function showMessage(message) {
+          let messageDec = decryptString(message);
+          let messageClean = DOMPurify.sanitize(messageDec);
+          let messageTrim = messageClean.trim();
+          messages.innerHTML += `\n\n${messageTrim}`;
+          messages.scrollTop = messages.scrollHeight;
+          messageBox.value = '';
+        }
+
+        function init() {
+          if (ws) {
+            ws.onerror = ws.onopen = ws.onclose = null;
+            ws.close();
+          }
+
+          ws = new WebSocket('ws://localhost:24601');
+          ws.onopen = () => {
+            console.log('Connection opened!');
+          }
+          ws.onmessage = ({
+            data
+          }) => showMessage(data);
+          ws.onclose = function () {
+            ws = null;
+          }
+        }
+
+        sendBtn.onclick = function () {
+          if (!ws) {
+            showMessage("No WebSocket connection :(");
+            return;
+          }
+
+          let messageClean = DOMPurify.sanitize(messageBox.value);
+          let messageTrim = messageClean.trim();
+          let messageEnc = encryptString(messageTrim);
+                
+          // Encrypt on sending to ws
+          ws.send(messageEnc);
+          showMessage(messageEnc);
+        }
+
+        init();
+      } else alert("Access denied");
+    })();
+  </script>
+</body>
+
+</html>

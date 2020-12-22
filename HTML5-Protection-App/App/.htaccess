@@ -1,0 +1,15 @@
+# Security headers
+# Run Php without filename extension
+Options +FollowSymLinks
+# Turn mod_rewrite on
+RewriteEngine On
+RewriteBase /
+
+# Pretty index.php url
+RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+## To internally redirect /dir/foo to /dir/foo.php
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_FILENAME}.php [L]
+

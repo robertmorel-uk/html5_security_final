@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser History API</title>
+</head>
+<body>
+<p>The basic methods of the history object are:</p>
+<script>
+window.history.length;
+//Returns the number of entries in the joint session history.
+window.history.state;
+//Returns the current state object.
+window.history.go(n);
+//Goes backwards or forwards by the specified number of steps in the joint session history.
+window.history.back();
+//Goes backwards by one step in the joint session history.
+window.history.forward();
+//Goes forwards by one step in the joint session history.
+window.history.pushState(data, title [0, url]);
+//Pushes the data specified in the arguments onto the session history.
+window.history.replaceState(data, title [0, url]) ;
+//Updates the current entry in the session history, with the given data.
+history.pushState({page: 1}, "title 1", "?page=1") //example
+</script>
+    
+</body>
+</html>

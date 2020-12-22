@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Sandboxing</title>
+</head>
+
+<body>
+    <iframe sandbox
+    src="https://platform.twitter.com/widgets/tweet_button.html"
+    style="border: 0; width:130px; height:25px;"></iframe>
+
+    <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+    src="https://platform.twitter.com/widgets/tweet_button.html"
+    style="border: 0; width:130px; height:25px;"></iframe>
+
+    <iframe
+    src="https://platform.twitter.com/widgets/tweet_button.html"
+    style="border: 0; width:130px; height:25px;"></iframe>
+
+    <br /><br /><br />
+
+    <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+    src="http://6-web-workers.com/simple/web-workers.html"
+    style="border: 0; width:830px; height:825px;"></iframe>
+</body>
+
+</html>

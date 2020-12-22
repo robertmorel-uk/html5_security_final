@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <title>Brute Force Password Attack Register</title>
+    <style>
+        .demo-div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #555;
+            background: whitesmoke;
+        }
+    </style>
+    <script>
+        const usernameRegex = /^[a-zA-Z0-9]+$/;
+        const passwordRegex = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{12,30}/;
+        $('document').ready(function () {
+
+            $("#register").click(function (event) {
+                 let username = $("#username").val();
+                 let password = $("#password").val();
+
+                    if (username == "" || password == "") {
+                        $("#message").text("Please complete the required fields");
+                    }
+
+                    else if (localStorage.getItem("username") == username) {
+                        $("#message").text("Already registered");
+                        return 0;
+                    }
+
+                    else if(usernameRegex.test(username) == 0){
+                        $("#message").text("Username should only have regular characters or numbers");
+                        return 0;
+                    }
+
+                    else if(passwordRegex.test(password) == 0){
+                        $("#message").text("Password should have an upper, lower, number and special character and be length 13-32");
+                        return 0;
+                    }
+
+                    else{
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("password", password);
+                        $("#message").text("Registration succesful");
+                }
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="demo-div">
+        <h3>Brute Force Password attack Register</h3>
+    </div>
+
+    <div class="demo-div">
+            <fieldset>
+                <legend>Register</legend>
+                <label for="username">User:</label>
+                <input type="text" name="username" id="username" placeholder="Enter a username"><br>
+                <label for="password">Pass:</label>
+                <input type="password" name="password" id="password" placeholder="Enter a password"><br><br>
+                <input type="submit" class="btn btn-primary" id="register" value="Register">
+            </fieldset>
+        <h5 id="message"></h5>
+    </div>
+</body>
+
+</html>

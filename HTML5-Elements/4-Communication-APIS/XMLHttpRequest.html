@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML HTTP Request</title>
+    <script>
+        var XHR = new XMLHttpRequest();
+        var URL = "https://api.github.com/users/robertmorel";
+        console.log('STARTED', XHR.readyState); // readyState will be 0
+
+        XHR.onreadystatechange = function () {
+            if (XHR.readyState == 4) {
+                console.log('DONE', XHR.readyState); // readyState will be 4
+                if (XHR.status == 200) {
+                    console.log(XHR.responseText); // Will be blocked by CORS
+                } else {
+                    console.log("Blocked by CORS!");
+                }
+            }
+        }
+
+        XHR.open("GET", URL);
+        console.log('OPENED', XHR.readyState); // readyState will be 1
+        XHR.send();
+    </script>
+</head>
+
+<body>
+    Check the console.
+</body>
+
+</html>

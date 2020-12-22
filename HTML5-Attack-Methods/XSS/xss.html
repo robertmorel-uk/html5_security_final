@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <title>Reflected XSS</title>
+    <style>
+        .demo-div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #555;
+            background: whitesmoke;
+        }
+    </style>
+    <script>
+        $('document').ready(function () {
+        if (localStorage.getItem("username")) {
+        let usernameLS = localStorage.getItem("username");
+        $("#username").html(usernameLS);
+        } else localStorage.setItem("username","<img src='xssd.jpg' width='500px' height='200px' onmouseover=alert(1)></h1>");
+        });
+    </script>
+</head>
+<body>
+    <script>
+        /*
+        Reflected XSS in .php url
+        /"><svg%20onload=alert(1)></svg>
+        */
+    </script>
+    <div class="demo-div">
+        <h2>Welcome<span id="username"></span></h2>
+    <form action="/xss.php/"><svg height="0" onload=alert(1)>"></svg>
+        <fieldset>
+            <legend>Login</legend>
+            <label for="username">User:</label>
+            <input type="text" name="username" id="username" placeholder="Enter username"><br />
+            <label for="password">Pass:</label>
+            <input type="password" name="password" id="password" placeholder="Enter password"><br /><br />
+            <input type="submit" id="login" class="btn btn-primary" value="Login"><br />
+            <h5 id="message"></h5>
+        </fieldset>
+    </form>
+
+    <script>
+        /*
+        Reflected XSS inside of tags
+        ?a=<svg%20onload=alert(1)>
+        */
+    </script>
+    <div class="demo-div">
+        <h2>Reflected XSS inside tag<svg height="0" onload=alert(2)>"></h2>
+            <svg height="0" onload=alert(3)>">
+    </div>
+</div>
+</body>
+</html>

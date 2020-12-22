@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Web Messaging Client</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const button = document.getElementById('myButton');
+            button.addEventListener('click', getServerMessage, false);
+        });
+
+        function getServerMessage() {
+            const iframe = document.getElementById('myFrame');
+            let messageToSend = document.getElementById("message").value;
+            // The client posts a message to the server
+            iframe.contentWindow.postMessage(
+                "This content has been posted to the IFrame: " + messageToSend,
+                "http://4-communication-apis.com"
+            );
+        }
+    </script>
+</head>
+<div class="container m-4">
+    <!--The IFrame contains the web-messaging-client.html document -->
+    <div class="row">
+        <form>
+            <fieldset>
+                <legend>Send your message to the IFrame:</legend>
+                <input type="text" name="message" id="message"><br><br>
+                <input type="button" class="btn btn-primary mb-4" id="myButton" value="Send message">
+            </fieldset>
+        </form>
+    </div>
+    <div class="row">
+        <iframe width="400" height="400" id="myFrame" src="./web-messaging-server.html">
+        </iframe>
+    </div>
+</div>
+</body>
+
+</html>

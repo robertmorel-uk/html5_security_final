@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage API'S | Local Storage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $('document').ready(function () {
+
+            // Check cart on page load
+            if (typeof (Storage) !== "undefined") {
+                if (localStorage.counter) {
+                $("#numberInCart").text(localStorage.counter + " Items in cart");
+                logStorage()
+                }
+            }
+
+            // Update cart on click
+            $('#counterInc').on('click', function (e) {
+                if (typeof (Storage) !== "undefined") {
+                    // Check if local storage is supported in browser
+                    if (localStorage.counter) {
+                        // If counter has been set then add 1 to it
+                        localStorage.counter = Number(localStorage.counter) + 1;
+                    } else {
+                        // Else set counter to 1
+                        localStorage.counter = 1;
+                    }
+                    $("#numberInCart").text(localStorage.counter + " Items in cart");
+                    logStorage();
+                }
+            })
+
+            // Reset cart
+            $('#reset').on('click', function (e) {
+                localStorage.counter = 0;
+                $("#numberInCart").text("Cart is empty");
+                logStorage();
+            })
+
+            function logStorage(){
+                console.log(localStorage);
+            }
+
+        }) // End doc ready
+    </script>
+</head>
+
+<body>
+    <div class="container p-2 m-2">
+        <p><button id="counterInc" type="button" class="btn btn-primary">Add to cart</button></p>
+        <h3 id="numberInCart">Cart is empty<h3>
+        <p><button id="reset" type="button" class="btn btn-warning">Empty cart</button></p>
+    </div>
+</body>
+
+</html>
